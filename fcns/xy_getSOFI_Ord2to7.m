@@ -102,7 +102,6 @@ load CumuMapFigsString.mat
 x=zeros(size(XC2N1));
 
 xy_getSOFI_CombinePixelsOrdAll
-xy_getSOFI_CombinePixelsOrdAll_MomentsLike
 
 
 end
