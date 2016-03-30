@@ -91,5 +91,4 @@ X5 = C5cv./(AC2+eps);
 X6 = C6cv./(AC2+eps);
 X7 = C7cv./(AC2+eps);
 [RhoMap, RhoTru, epsMap] = xy_getRhoEpsi(X3, X4, X5, X6, X7, 1000);
-save test2.mat
 end
