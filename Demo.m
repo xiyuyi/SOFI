@@ -1,5 +1,6 @@
 % demo code for SOFI processing.
-addpath ./fcns
+PackagePath = '/Volumes/Seagate2/Research/SOFI-by-Xiyu';
+addpath([PackagePath,'./fcns']);
 xdim=256;
 ydim=256;
 mvlength=1000;
@@ -9,7 +10,7 @@ outputPath = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeRead
 ImMeanLocFori = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeReadMe/SOFI_Modules/ExampleMovie/ImMean_dish1_9_good.mat';
 saveOption='off';
 laglist = [0, 0, 0, 0, 0, 0, 0];
-LibPath = './fcns'
+LibPath = [PackagePath,'/fcns'];
 xini=89; yini=160;
 xend=166;yend=250;
 
