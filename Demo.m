@@ -18,8 +18,14 @@ sigFit = xy_getPSF_globalAC2XC2_selectFOV(xdim,ydim,mvlength,inputPath,inputName
 
 
 %% step2 SOFI calculation
-%xy_getSOFI_Ord2to7(xdim,ydim,mvlength,inputPath,inputName,outputPath,laglist,LibPath,sigFit);
+xy_getSOFI_Ord2to7(xdim,ydim,mvlength,inputPath,inputName,outputPath,laglist,LibPath,sigFit);
 
 
 %% step3 parameter estimation
-[RhoMap, RhoTru, epsMap] = xy_getPSF_paraEsti(xdim,ydim,mvlength,inputPath,inputName,outputPath,ImMeanLocFori,sigFit,saveOption,laglist);
+[RhoMap, RhoTru, epsMap] = xy_getPSF_paraEsti(xdim,ydim,mvlength,outputPath,inputName,outputPath,ImMeanLocFori,sigFit,saveOption,laglist);
+
+
+%% step4 get Moments reconstruction
+[M2, M3, M4, M5, M6, M7] = xy_getSOFI_MomentsReconstruction(inputPath,outputPath,ImMeanLocFori,LibPath);
+
+save([outputPath,'/ldrcOutPut.mat']);
