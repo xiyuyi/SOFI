@@ -19,7 +19,7 @@ for i0 = 2:6
     eval(['X=X',num2str(i0),';'])
     eval(['Y=Y',num2str(i0),';'])
     eval(['Input= k',num2str(i0),';'])
-    kInt = interp2(X,Y,Input,X7,Y7,'spline');
+    kInt = interp2(X,Y,Input',X7,Y7,'spline')';
     eval(['c',num2str(i0),'=kInt;'])
 end
 c7 = k7;

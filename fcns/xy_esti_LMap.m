@@ -15,6 +15,7 @@ Lini = round(a7./(b7).*AceptMap./amp7.*UestiFactor^2.*IniFactor);
 Lini(Lini==Inf)=0;
 Lini(Lini<0)=0;
 Lini(isnan(Lini))=0;
+Lini(Lini>5)=5;
 N_emi = sum(Lini(:)); %total number of candidate emitters.
 locs = zeros(N_emi,2); %put 2D coordinate to candidate emitters.
 [locsx, locsy] = find(Lini>0);
