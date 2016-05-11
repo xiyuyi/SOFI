@@ -1,7 +1,7 @@
 function [M2, M3, M4, M5, M6, M7] = xy_getSOFI_MomentsReconstruction(inputPath,outputPath,ImMeanLocFori,LibPath);
 addpath(LibPath)
 for ord = 2:7
-eval(['load ',inputPath,'/SOFIforFit_XC',num2str(ord),'.mat ActualImage']);
+eval(['load(''',inputPath,'/SOFIforFit_XC',num2str(ord),'.mat'', ''ActualImage'');']);
 eval(['k',num2str(ord),'=ActualImage.XC',num2str(ord),'_rmW(',num2str(ord),'*3:end-',num2str(ord),'*3+1,',num2str(ord),'*3:end-',num2str(ord),'*3+1);'])
 end
 load(ImMeanLocFori)
