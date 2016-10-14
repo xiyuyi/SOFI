@@ -1,4 +1,4 @@
-function xy_getSOFI_Ord2to7(xdim,ydim,mvlength,inputPath,inputName,outputPath,laglist,LibPath,sigFit);
+function xy_getSOFI_Ord2to7(xdim, ydim, mvlength, inputPath, inputName, outputPath, laglist, LibPath, sigFit);
 %% prepare for parameters
 addpath(LibPath);
 xy_getSOFI_Ord2to7_paraPrep
@@ -98,7 +98,7 @@ end
 % calculate all the AC2 AC3 AC4 AC5 depend on the sofi order
 load CumuMapInds.mat
 load CumuMapFigsString.mat
-[Xi2Map, Xi2Matrix, wMap, wMatrix] = xy_getSOFI_Ord2to7_getXi2Map_wMap(CumuMapInd, tags, sigFit)
+[Xi2Map, Xi2Matrix, wMap, wMatrix] = xy_getSOFI_Ord2to7_getXi2Map_wMap(CumuMapInd, tags, sigFit);
 x=zeros(size(XC2N1));
 
 xy_getSOFI_CombinePixelsOrdAll

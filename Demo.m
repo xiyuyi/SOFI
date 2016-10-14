@@ -11,8 +11,8 @@ ImMeanLocFori = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeR
 saveOption='off';
 laglist = [0, 0, 0, 0, 0, 0, 0];
 LibPath = [PackagePath,'/fcns'];
-xini=89; yini=160;
-xend=166;yend=250;
+xini=89;    yini=160;
+xend=166;   yend=250;
 
 %% step1 estimate the PSF.
 sigFit = xy_getPSF_globalAC2XC2_selectFOV(xdim,ydim,mvlength,inputPath,inputName,outputPath,ImMeanLocFori,saveOption,xini,xend,yini,yend);

@@ -4,7 +4,7 @@ load([LibPath,'/CumuMapFigsString.mat']);
 load([LibPath,'/CumuMapInds.mat']);
 load([LibPath,'/name1.mat']);
 
-if sum(laglist)>0; error('non-zero time lags not enabled');end
+%if sum(laglist)>0; error('non-zero time lags not enabled');end
 Iminfo.size='uint16';
 FileInfo.xdim=xdim;
 FileInfo.ydim=ydim;

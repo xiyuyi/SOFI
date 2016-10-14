@@ -1,1 +1,0 @@
-xy_getSOFI_removeWeightingFactor

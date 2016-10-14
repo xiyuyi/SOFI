@@ -41,11 +41,13 @@ end
  for i0 = 1:12
      weights=SOFI2_AC(:).^2;weights(weights==Inf)=0;weights(isnan(weights))=0;
      eval(['y=SOFI2_XC',num2str(i0),'(:);'])
-     [a, b] = fit(SOFI2_AC(:),y,'poly1','lower',[0,-Inf],'upper',[1,Inf],'weight',weights);
+%     [a, b] = fit(SOFI2_AC(:),y,'poly1','lower',[0,-Inf],'upper',[1,Inf],'weight',weights);
+     [a, b] = fit(SOFI2_AC(:),y,'poly1','weight',weights);
      eval(['Slope.S(',num2str(i0),')=a.p1;'])
  end
 % now we should have yy = -xx/2/sig^2
-[a,b] = fit(Slope.Xi2',log(Slope.S+eps)','poly1','lower',[-Inf,-Inf],'upper',[Inf,Inf]); 
+w = log(Slope.S+eps)'; w(isnan(w))=0;
+[a,b] = fit(Slope.Xi2',w,'poly1','lower',[-Inf,-Inf],'upper',[Inf,Inf]); 
 sigFit = sqrt(-(1/2/a.p1));
 
 if strcmp(saveOption,'on')

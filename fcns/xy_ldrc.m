@@ -32,4 +32,6 @@ end
 output.topMap = topMap;
 output.ldrc = ldrc;
 output.maskR = maskR;
+output.ldrcW = zeros(size(ldrc));
+output.ldrcW(windowSize/2:end-windowSize/2,windowSize/2:end-windowSize/2) = ldrc(windowSize/2:end-windowSize/2,windowSize/2:end-windowSize/2).*topMap;
 end
