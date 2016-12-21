@@ -8,6 +8,12 @@ load(ImMeanLoc)
 xdim = xend-xini+1;
 ydim = yend-yini+1;
 
+if ismac
+    In = [inputPath,'/',inpuName];
+elseif ispc
+    In = [inputPath,'\',inpuName];
+end
+
 SOFI2_AC = zeros(xdim-4, ydim-4); %edge All cutted.
 for i0 = 1:12
     eval(['SOFI2_XC',num2str(i0),' = zeros(xdim-4, ydim-4);'])
@@ -15,7 +21,7 @@ end
 mvlengthS = num2str(mvlength);
 for i0 = 1:mvlength
     disp(['frame #',num2str(i0),'/',mvlengthS])
-    im = double(imread([inputPath,'/',inpuName],'Index',i0)) - ImMean;
+    im = double(imread(In,'Index',i0)) - ImMean;
     im = im(xini:xend,yini:yend);
 % Cut edges, to get equivalence image shifting, to get alignment of
 % pixels as if XC computation.
@@ -49,9 +55,13 @@ end
 sigFit = sqrt(-(1/2/a.p1));
 
 if strcmp(saveOption,'on')
-save([outputPath,'/Ufit.mat'],'sigFit');
-save([outputPath,'/All_from_PSFfit.mat']);
-
+if ismac
+    save([outputPath,'/Ufit.mat'],'sigFit');
+    save([outputPath,'/All_from_PSFfit.mat']);
+elseif ispc
+    save([outputPath,'\Ufit.mat'],'sigFit');
+    save([outputPath,'\All_from_PSFfit.mat']);
+end
 end
 
 end

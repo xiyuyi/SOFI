@@ -1,5 +1,6 @@
 % demo code for SOFI processing.
 PackagePath = '.';
+
 addpath(genpath([PackagePath,'/fcns']));
 xdim=256;
 ydim=256;

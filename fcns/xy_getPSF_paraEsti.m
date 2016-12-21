@@ -2,11 +2,16 @@ function [RhoMap, RhoTru, epsMap] = xy_getPSF_paraEsti(xdim,ydim,mvlength,inputP
 U = fspecial('gaussian',[301,301],sig);
 load(ImMeanLoc);
 mvlengthS = num2str(mvlength);
+if ismac
+    In = [inputPath,'/',inputName];
+elseif ispc
+    In = [inputPath,'\',inputName];
+end
 if sum(tauSeries) == 0
     for ord = 2:7; eval(['m',num2str(ord),' = zeros(xdim, ydim);']); end
     for i0 = 1:mvlength
         disp(['processing frame #',num2str(i0),'/',mvlengthS])
-        im = double(imread([inputPath,'/',inputName],'Index',i0)) - ImMean;
+        im = double(imread(In,'Index',i0)) - ImMean;
         for ord = 2:7; eval(['m',num2str(ord),' = m',num2str(ord),' + im.^',num2str(ord),';']); end
     end
     for ord = 2:7; eval(['m',num2str(ord),' = m',num2str(ord),'./mvlength;']); end
