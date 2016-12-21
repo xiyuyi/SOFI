@@ -15,7 +15,7 @@ eval(['Y',num2str(ord),'=Y;'])
 end
 
 for i0 = 2:6
-    disp(['interpolation of cumulant order ',num2str(i0),'/',6,'to match up order 7'])
+    disp(['interpolation of cumulant order ',num2str(i0),'/6 to match up order 7'])
     eval(['X=X',num2str(i0),';'])
     eval(['Y=Y',num2str(i0),';'])
     eval(['Input= k',num2str(i0),';'])

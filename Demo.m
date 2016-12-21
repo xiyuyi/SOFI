@@ -8,14 +8,9 @@ mvlength=1000;
 if ismac
     inputPath = './exampleData';
 elseif ispc
-<<<<<<< HEAD
     inputPath = './exampleData';
-end
-=======
-    inputPath = '.\exampleData';
 end  
 
->>>>>>> 9aa6385b84fbe8bbbe6d47a60be444d6fcaf1864
 inputName = 'DifferentTauOn_2016Oct11_3.tif';
 if ismac
     outputPath = './Output';
@@ -52,11 +47,11 @@ xy_getSOFI_Ord2to7(xdim,ydim,mvlength,inputPath,inputName,outputPath,laglist,Lib
 
 
 %% step3 parameter estimation
-[RhoMap, RhoTru, epsMap] = xy_getPSF_paraEsti(xdim,ydim,mvlength,outputPath,inputName,outputPath,ImMeanLocFori,sigFit,saveOption,laglist);
+[RhoMap, RhoTru, epsMap] = xy_getPSF_paraEsti(xdim,ydim,mvlength,inputPath,inputName,outputPath,ImMeanLocFori,sigFit,saveOption,laglist);
 
 
 %% step4 get Moments reconstruction
-[M2, M3, M4, M5, M6, M7] = xy_getSOFI_MomentsReconstruction(inputPath,outputPath,ImMeanLocFori,LibPath);
+[M2, M3, M4, M5, M6, M7] = xy_getSOFI_MomentsReconstruction(outputPath,outputPath,ImMeanLocFori,LibPath);
 
 %% step5 ldrc process the Moments. use second order SOFI as reference mask
 InputImage = imfilter(M6,fspecial('gaussian',[11,11],2));
