@@ -1,19 +1,26 @@
 % demo code for SOFI processing.
-PackagePath = '/Volumes/Seagate2/Research/SOFI-by-Xiyu';
-addpath([PackagePath,'./fcns']);
+PackagePath = '.';
+addpath(genpath([PackagePath,'/fcns']));
 xdim=256;
 ydim=256;
 mvlength=1000;
-inputPath = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeReadMe/SOFI_Modules/ExampleMovie';
-inputName = 'dish1_9_good.tif';
-outputPath = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeReadMe/SOFI_Modules/ExampleMovie';
-ImMeanLocFori = '/Volumes/Seagate2/Research/SOFI-ldrc/ForPublish_code_moved_SeeReadMe/SOFI_Modules/ExampleMovie/ImMean_dish1_9_good.mat';
+inputPath = './exampleData';
+inputName = 'DifferentTauOn_2016Oct11_3.tif';
+outputPath = './Output';
+ImMeanLocFori = [outputPath,'/ImMean.mat'];
 saveOption='off';
 laglist = [0, 0, 0, 0, 0, 0, 0];
 LibPath = [PackagePath,'/fcns'];
-xini=89; yini=160;
-xend=166;yend=250;
-
+xini = 1;    yini = 1;
+xend = xdim; yend = ydim;
+mkdir(outputPath);
+ImMean = zeros(xdim, ydim);
+for i0 = 1 : mvlength
+    disp(['calculating Mean frame #',num2str(i0),'/',num2str(mvlength)])
+    ImMean = ImMean + double(imread([inputPath,'/',inputName],'Index',i0));
+end
+ImMean = ImMean./mvlength;
+save(ImMeanLocFori,'ImMean');
 %% step1 estimate the PSF.
 sigFit = xy_getPSF_globalAC2XC2_selectFOV(xdim,ydim,mvlength,inputPath,inputName,outputPath,ImMeanLocFori,saveOption,xini,xend,yini,yend);
 

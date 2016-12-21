@@ -1,22 +1,44 @@
 %xy_getSOFI_Ord2to7_paraPrep
+if ismac
 load([LibPath,'/Tags.mat']);
 load([LibPath,'/CumuMapFigsString.mat']);
 load([LibPath,'/CumuMapInds.mat']);
 load([LibPath,'/name1.mat']);
+elseif ispc
+load([LibPath,'\Tags.mat']);
+load([LibPath,'\CumuMapFigsString.mat']);
+load([LibPath,'\CumuMapInds.mat']);
+load([LibPath,'\name1.mat']);
+else
+    disp('Platform not supported')
+end
 
 if sum(laglist)>0; error('non-zero time lags not enabled');end
 Iminfo.size='uint16';
 FileInfo.xdim=xdim;
 FileInfo.ydim=ydim;
-FileInfo.BMpath='./';
+if ismac
+    FileInfo.BMpath='./';
+elseif ispc
+    FileInfo.BMpath='.\';
+end
 FileInfo.BMname=name1;
 FileInfo.BMextn='tif';
-FileInfo.SFpath='./';
+if ismac
+    FileInfo.SFpath='./';
+elseif ispc
+    FileInfo.SFpath='.\';
+end
 FileInfo.SFname=['SOFI_',name1];
 FileInfo.SFextn='mat';
 Pro.IMinfo=Iminfo;
 FileInfo.FIGnum=mvlength; clear mvlength;
-Pro.Frame1=double(imread([inputPath,'/',inputName],'Index',1));
+if ismac
+    Pro.Frame1=double(imread([inputPath,'/',inputName],'Index',1));
+elseif ispc
+    Pro.Frame1=double(imread([inputPath,'\',inputName],'Index',1));
+end    
+
 Pro.IMsize=size(Pro.Frame1);
 FileInfo.IMxdim=Pro.IMsize(1);
 FileInfo.IMydim=Pro.IMsize(2);
