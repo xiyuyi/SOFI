@@ -5,20 +5,36 @@ addpath(genpath([PackagePath,'/fcns']));
 xdim=256;
 ydim=256;
 mvlength=1000;
-inputPath = './exampleData';
+if ismac
+    inputPath = './exampleData';
+elseif ispc
+    inputPath = '.\exampleData';
+end  
+
 inputName = 'DifferentTauOn_2016Oct11_3.tif';
-outputPath = './Output';
-ImMeanLocFori = [outputPath,'/ImMean.mat'];
+if ismac
+    outputPath = './Output';
+    ImMeanLocFori = [outputPath,'/ImMean.mat'];
+    LibPath = [PackagePath,'/fcns'];
+elseif ispc
+    outputPath = '.\Output';
+    ImMeanLocFori = [outputPath,'\ImMean.mat'];
+    LibPath = [PackagePath,'\fcns'];
+end
+
 saveOption='off';
 laglist = [0, 0, 0, 0, 0, 0, 0];
-LibPath = [PackagePath,'/fcns'];
 xini = 1;    yini = 1;
 xend = xdim; yend = ydim;
 mkdir(outputPath);
 ImMean = zeros(xdim, ydim);
 for i0 = 1 : mvlength
     disp(['calculating Mean frame #',num2str(i0),'/',num2str(mvlength)])
-    ImMean = ImMean + double(imread([inputPath,'/',inputName],'Index',i0));
+    if ismac
+        ImMean = ImMean + double(imread([inputPath,'/',inputName],'Index',i0));
+    elseif ispc
+        ImMean = ImMean + double(imread([inputPath,'\',inputName],'Index',i0));
+    end    
 end
 ImMean = ImMean./mvlength;
 save(ImMeanLocFori,'ImMean');
