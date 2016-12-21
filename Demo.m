@@ -5,7 +5,11 @@ addpath(genpath([PackagePath,'/fcns']));
 xdim=256;
 ydim=256;
 mvlength=1000;
-inputPath = './exampleData';
+if ismac
+    inputPath = './exampleData';
+elseif ispc
+    inputPath = './exampleData';
+end
 inputName = 'DifferentTauOn_2016Oct11_3.tif';
 outputPath = './Output';
 ImMeanLocFori = [outputPath,'/ImMean.mat'];
