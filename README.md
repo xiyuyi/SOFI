@@ -4,7 +4,7 @@
     {SOFI program written by Xiyu, Shimon Weiss group, UCLA}
     Copyright (C) {2016}  {Xiyu Yi}
 
-    This program is free software; you can redistribute it and/or modify
+    This program WILL BE free software (after it is releaed with my publication... uhmm...); you WILL BE ALLOWED to redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation; either version 2 of the License, or
     (at your option) any later version.
